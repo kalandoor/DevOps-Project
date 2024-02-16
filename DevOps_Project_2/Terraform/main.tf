@@ -13,12 +13,13 @@ data "aws_ami" "amazon-linux" {
 }
 
 resource "aws_instance" "dev_machine" {
-  ami = data.aws_ami.amazon-linux.id
+  ami           = data.aws_ami.amazon-linux.id
   instance_type = "t2.micro"
-  key_name = "euran-jenkins"
+  key_name      = "euran-jenkins"
 
   tags = {
     Environment = "dev"
-    Name = "${var.name}-server"
+    Name        = "${var.name}-server"
+    application = "sockshop"
   }
 }
